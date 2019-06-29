@@ -1,56 +1,45 @@
-import React from 'react';
-import * as S from './styles';
+import React from "react";
+import { Field, reduxForm } from "redux-form";
+import * as S from "./styles";
+import CountryAddInput from "./CountryAddInput.jsx";
 
-const CountryInputForm = ({
-  name,
-  alpha2Code,
-  callingCodes,
-  capital,
-  region,
-  onChange,
-  onSubmit,
-}) => {
+const CountryInputForm = ({ handleSubmit, onSubmit }) => {
   return (
-    <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <S.CountryAddTitle>새로운 나라 생성 : </S.CountryAddTitle>
-      <S.CountryAddInput
+      <Field
         name="name"
-        type="input"
+        type="text"
+        component={CountryAddInput}
         placeholder="국가명"
-        value={name}
-        onChange={onChange}
       />
-      <S.CountryAddInput
+      <Field
         name="alpha2Code"
-        type="input"
-        placeholder="alpha 2 code"
-        value={alpha2Code}
-        onChange={onChange}
+        type="text"
+        component={CountryAddInput}
+        placeholder="alpha 2 Code"
       />
-      <S.CountryAddInput
+      <Field
         name="callingCodes"
         type="number"
+        component={CountryAddInput}
         placeholder="국제전화번호"
-        value={callingCodes}
-        onChange={onChange}
       />
-      <S.CountryAddInput
+      <Field
         name="capital"
-        type="input"
+        type="text"
+        component={CountryAddInput}
         placeholder="수도"
-        value={capital}
-        onChange={onChange}
       />
-      <S.CountryAddInput
+      <Field
         name="region"
-        type="input"
+        type="text"
+        component={CountryAddInput}
         placeholder="대륙"
-        value={region}
-        onChange={onChange}
       />
-      <S.CountryAddButton onClick={onSubmit}>추가</S.CountryAddButton>
-    </div>
+      <S.CountryAddButton type="submit">추가</S.CountryAddButton>
+    </form>
   );
 };
 
-export default CountryInputForm;
+export default reduxForm({ form: "countryAdd" })(CountryInputForm);

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import getScrollBar from '../../utils/getScrollBar';
+import styled from "styled-components";
+import getScrollBar from "../../utils/getScrollBar";
 
 export const TableWrapper = styled.div`
   width: 90vw;
@@ -8,10 +8,10 @@ export const TableWrapper = styled.div`
 export const TableRow = styled.div`
   display: flex;
   background-color: ${props => {
-    return props.header ? '#DDD' : '#FFF';
+    return props.header ? "#DDD" : "#FFF";
   }};
   width: ${props =>
-    props.header ? `calc(100% - ${getScrollBar()}px)` : '100%'};
+    props.header ? `calc(100% - ${getScrollBar()}px)` : "100%"};
   border: 1px solid black;
 `;
 

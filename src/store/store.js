@@ -1,13 +1,18 @@
-import { applyMiddleware, createStore, compose } from 'redux';
-import ReduxThunk from 'redux-thunk';
-import reducer from '../modules/root';
+import { applyMiddleware, createStore, compose } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import reducer from "../modules/root";
+import epics from "../modules/epics";
+
+const epicMiddleware = createEpicMiddleware();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default function configureMiddleware() {
   const store = createStore(
     reducer,
-    composeEnhancers(applyMiddleware(ReduxThunk)),
+    composeEnhancers(applyMiddleware(epicMiddleware))
   );
+
+  epicMiddleware.run(epics);
 
   return store;
 }

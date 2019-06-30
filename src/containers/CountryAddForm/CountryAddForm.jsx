@@ -16,7 +16,7 @@ class CountryAddForm extends Component {
       region
     };
     CountryActions.addCountry(newCountryData);
-    CountryActions.filteredCountryThunk();
+    CountryActions.filteredCountry();
   };
 
   render() {

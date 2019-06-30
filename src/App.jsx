@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as countryActions from './modules/country';
-import { CountryList, CountryAddForm, CountrySearch } from './containers';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import * as countryActions from "./modules/country";
+import { CountryList, CountryAddForm, CountrySearch } from "./containers";
 
 const Root = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Root = styled.div`
 class App extends Component {
   componentDidMount() {
     const { CountryActions } = this.props;
-    CountryActions.fetchCountryThunk();
+    CountryActions.fetchCountry();
   }
 
   render() {
@@ -31,10 +31,10 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  CountryActions: bindActionCreators(countryActions, dispatch),
+  CountryActions: bindActionCreators(countryActions, dispatch)
 });
 
 export default connect(
   null,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(App);

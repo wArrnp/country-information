@@ -1,4 +1,4 @@
-const SEARCH_COUNTRY = "input/SEARCH_COUNTRY";
+export const SEARCH_INPUT = "input/SEARCH_INPUT";
 
 const initialState = {
   keyword: ""
@@ -6,14 +6,14 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_COUNTRY:
+    case SEARCH_INPUT:
       return { keyword: action.keyword };
     default:
       return state;
   }
 }
 
-export const searchCountry = keyword => ({
-  type: SEARCH_COUNTRY,
+export const searchInput = keyword => ({
+  type: SEARCH_INPUT,
   keyword
 });

@@ -113,7 +113,7 @@ export const sortCountry = sortedCountryData => ({
 
 export const sortCountryThunk = (columnName, rule) => (dispatch, getState) => {
   const { country } = getState();
-  const sortedCountryData = country.countryData.sort((a, b) => {
+  const sortedCountryData = [...country.countryData].sort((a, b) => {
     if (columnName === "callingCodes") {
       if (a.callingCodes[0] < b.callingCodes[0]) {
         return rule ? -1 : 1;
